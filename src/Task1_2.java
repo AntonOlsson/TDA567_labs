@@ -32,6 +32,9 @@ public class Task1_2
 		ws.addWorkingPeriod("Kalle", 2, 2);
 	}
 	
+	
+	/* PARTITION 1 */
+	
 	/**
 	 * Part1
 	 * starttime <= endtime
@@ -54,6 +57,12 @@ public class Task1_2
 			);
 	}
 	
+	/* PARTITION 1 BORDER CASES */
+	
+	
+	
+	/* PARTITION 2 */
+	
 	/**
 	 * Part2
 	 * starttime > endtime
@@ -61,6 +70,19 @@ public class Task1_2
 	@Test
 	public void workingEmployees_Test_m_part2() {
 		final String[] result = ws.workingEmployees(18, 16);
+		assertEquals(0, result.length);
+	}
+	
+	/* PARTITION 2 BORDER CASES */
+	
+	/**
+	 * Part2
+	 * starttime > endtime
+	 */
+	
+	@Test
+	public void workingEmployees_Starttime_eq_endtime_plus_1() {
+		final String[] result = ws.workingEmployees(3, 2);
 		assertEquals(0, result.length);
 	}
 	
