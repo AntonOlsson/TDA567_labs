@@ -74,6 +74,9 @@ test_endtime_ge_size_border_max:
 test_starttime_gt_endtime_border:
     input: size = 4, starttime = 4, employee = "nisse", endtime = 3
     expected: return False
+test_starttime_gt_endtime_border_xd:
+    input: size = 4, starttime = 1, employee = "nisse", endtime = 1
+    expected: return True, schedule[1] = "nisse"
     
 test_starttime_border_min:
     input: size = 4, starttime = 0, employee = "nisse", endtime = 5
@@ -88,4 +91,49 @@ Bugs found:
 starttime > endtime
 Partition #1c:
     test_starttime_gt_endtime >>> BUG! result is true (should be false), schedule unchanged
+
+
+b)
+
+public String[] workingEmployees(int starttime, int endtime) { ... }
+
+Input space:
+    WorkSchedule.size >= 1
+    starttime >= 0
+    endtime in { MIN_INT ... WorkSchedule.size-1 } 
+
+Partition 1: Start time < endtime:
+    workingEmployees_Part1_test_empty_return:
+        input: starttime = 0, endtime = 0, schedule = [ [], [Nisse, Åsa], [Kalle], [] ], size = 4, requiredNumber = [3,3,3,3]
+        expected: []; schedule unchanged.
+        
+    workingEmployees_Part1_test_non_empty_return:
+        input: starttime = 0, endtime = 3, schedule = [ [], [Nisse, Åsa], [Kalle], [] ], size = 4, requiredNumber = [3,3,3,3]
+        expected: ["Nisse", "Åsa", "Kalle"]
+
+
+Partition 2: Start time > endtime:
+    workingEmployees_Test_m_part2:
+        input: starttime = 0, endtime = 0, schedule = [ [], [Nisse, Åsa], [Kalle], [] ], size = 4, requiredNumber = [3,3,3,3]
+        expected: []; schedule unchanged.
+
+Border cases:
+
+
     
+test_starttime_eq_endtime_border:
+    input: starttime = 1, endtime = 1, size = 4
+    expected: return ["Nisse", "Åsa"]
+
+
+
+
+
+
+
+
+
+
+
+
+

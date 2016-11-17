@@ -62,6 +62,20 @@ public class Task1_2
 	}
 	
 	
+	/*
+	 * Border case
+	 * starttime == endtime
+	 */
+	@Test
+	public void test_starttime_eq_endtime_border() {
+		final String[] result = ws.workingEmployees(1, 1);
+		assertEquals(
+				toSet(new String[] {"Nisse", "Aasa"}),
+				toSet(result)
+			);
+	}
+	
+	
 	Set<String> toSet(String[] arr) {
 		return new HashSet<String>(Arrays.asList(arr));
 	}
